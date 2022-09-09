@@ -1,6 +1,6 @@
 import datetime
 
-from django.utils.timezone import localtime 
+from django.utils.timezone import localtime
 from django.db import models
 
 
@@ -34,10 +34,9 @@ class Visit(models.Model):
 
 
 def get_duration(visit):
-    if not visit.leaved_at:
+    leaved_at = localtime(visit.leaved_at)
+    if visit.leaved_at is None:
         leaved_at = localtime()
-    else:
-        leaved_at = localtime(visit.leaved_at)
     entered_at = localtime(visit.entered_at)
     delta = leaved_at - entered_at
     return delta.total_seconds()
@@ -52,7 +51,4 @@ def format_duration(duration):
 def is_visit_long(visit, minutes=60):
     limit_time = datetime.timedelta(minutes=minutes)
     duration = get_duration(visit)
-    if duration > limit_time.total_seconds():
-        return True
-    else:
-        return False
+    return not duration < limit_time.total_seconds()
