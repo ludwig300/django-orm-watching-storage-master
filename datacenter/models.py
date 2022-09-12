@@ -35,8 +35,6 @@ class Visit(models.Model):
 
 def get_duration(visit):
     leaved_at = localtime(visit.leaved_at)
-    if visit.leaved_at is None:
-        leaved_at = localtime()
     entered_at = localtime(visit.entered_at)
     delta = leaved_at - entered_at
     return delta.total_seconds()
@@ -51,4 +49,4 @@ def format_duration(duration):
 def is_visit_long(visit, minutes=60):
     limit_time = datetime.timedelta(minutes=minutes)
     duration = get_duration(visit)
-    return not duration < limit_time.total_seconds()
+    return duration > limit_time.total_seconds()
