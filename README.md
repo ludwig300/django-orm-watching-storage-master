@@ -4,6 +4,7 @@
 ## Setting environment variables
 ### Requirements
 * django==3.2.*
+* environs==9.5.0
 * psycopg2-binary==2.9.*
 
 Remember, it is recommended to use [virtualenv/venv](https://docs.python.org/3/library/venv.html) for better isolation.
