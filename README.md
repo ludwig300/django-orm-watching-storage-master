@@ -15,7 +15,7 @@ pip install -r requirements.txt
 
 ### Open project directory from cmd
 ```
-$ python main.py 
+$ python manage.py runserver 0.0.0.0:8000
 ```
 
 ### Run in your browser [http://127.0.0.1:8000](http://127.0.0.1:8000)
