@@ -1,21 +1,33 @@
 import os
+from pickle import FALSE
+from environs import Env
+
+
+env = Env()
+env.read_env()
+host = env('HOST')
+port = env('PORT')
+name = env('NAME')
+user = env('USER')
+password = env('PASSWORD')
+secret_key = env('SECRET_KEY')
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': 'checkpoint.devman.org',
-        'PORT': '5434',
-        'NAME': 'checkpoint',
-        'USER': 'guard',
-        'PASSWORD': 'osim5',
+        'HOST': host,
+        'PORT': port,
+        'NAME': name,
+        'USER': user,
+        'PASSWORD': password,
     }
 }
 
 INSTALLED_APPS = ['datacenter']
 
-SECRET_KEY = 'REPLACE_ME'
+SECRET_KEY = secret_key
 
-DEBUG = True
+DEBUG = env.bool('DEBUG')
 
 ROOT_URLCONF = 'project.urls'
 
