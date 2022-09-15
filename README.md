@@ -2,6 +2,18 @@
 ## This is the bank's security console.
 
 ## Setting environment variables
+* Create `.env` file in project directory and write:
+```
+DB_ENGINE=REPLACE_ME
+DB_HOST=REPLACE_ME
+DB_PORT=REPLACE_ME
+DB_NAME=REPLACE_ME
+DB_USER=REPLACE_ME
+DB_PASSWORD=REPLACE_ME
+SECRET_KEY=REPLACE_ME
+DEBUG=REPLACE_ME
+ALLOWED_HOSTS=REPLACE_ME
+```		
 ### Requirements
 * django==3.2.*
 * environs==9.5.0
